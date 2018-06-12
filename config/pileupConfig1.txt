@@ -18,14 +18,14 @@ $
 [config-begin]
 
     Outputdir  = output
-    Outputfile = out_200PU_100kEvents.root
+    Outputfile = out_200PU_100kEventsNoNormal.root
     
 $ The luminosity is to be given to match the cross section values listed in the section "inputfiles"
 $ In this example, the cross sections are given in fb.
 $ In other cases that may be pb and the luminosity value here needs to be multplied by 1000.
 
-    Lumi       = 3000
-    
+$    Lumi       = 3000
+     Lumi	= 1
 $ If the testmode is activated, only a fraction of the events will be processed.
 $ This mode is meant to test histogram ranges etc. The scaling does not necessarily
 $ correspond to the relative cross sections of the processes
@@ -74,7 +74,7 @@ $ 7) Optional signal indicator. In case the signal has to be treated differently
 $    this can be indicated here and later checked in the loop.
 $ 8) Optional other options (not used for now)
 
-TT_TuneCUETP8M2T4_14TeV-powheg-pythia8_200PU_22.root, signal, 629, 150, 100000, 1
+TT_TuneCUETP8M2T4_14TeV-powheg-pythia8_200PU_22.root, signal, 629, 1, 1, 1
 
 $out_HLLHC_200PU.root, signal, 629, 150, auto, 1
 $HLLHC_output_with_pileup.root	, signal, 629, 150, auto, 1

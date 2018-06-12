@@ -93,9 +93,9 @@ void ttbarB::analyze(size_t childid /* this info can be used for printouts */){
 	TH1* histoMET = addPlot(new TH1D("METPT","MET PT",200,0,200),"p_{T} [GeV]","N_{e}");
 	TH1* histoMETPhi = addPlot(new TH1D("METPhi","MET Phi",100,-3,3),"Phi", "N_{e}");
 
-	TH1* histoNumJet = addPlot(new TH1D("NumJet","Number of Jets",30,0,30),"Jets","N_{e}");
+	TH1* histoNumJet = addPlot(new TH1D("NumJet","Number of Jets",30,0.5,30.5),"Jets","N_{e}");
 	//TH1* histoNumVert = addPlot(new TH1D("NumVert","Number of Vertices",100,0,100),"Vertices","N_{e}");
-	TH1* histoNumEvents = addPlot(new TH1D("NumEvents","Number of Events by Type",4,0,4),"Type of Events","N_{e}");
+	TH1* histoNumEvents = addPlot(new TH1D("NumEvents","Number of Events by Type",4,-0.5,4));
 
 	/*
 	 * If (optionally) a skim or a flat ntuple is to be created, please use the following function to initialize
@@ -236,6 +236,7 @@ void ttbarB::analyze(size_t childid /* this info can be used for printouts */){
 		}
 		
 		histoNumJet->Fill(numJets);
+
 		//histoNumVert->Fill(vert.size());	
 		
 
@@ -323,6 +324,9 @@ void ttbarB::analyze(size_t childid /* this info can be used for printouts */){
 	eventBreakdownS += "eu\t\t";
 	eventBreakdownS += std::to_string(euEvents);
 	eventBreakdownS += "\n";
+	eventBreakdownS += "From Histo\t";
+	eventBreakdownS += std::to_string(histoNumEvents->GetBinContent(1));
+	eventBreakdownS += "\n";
 
 	int numEvents = static_cast<int>(nevents);	
 	eventBreakdown->Branch("Total Processed",&numEvents);
@@ -332,6 +336,7 @@ void ttbarB::analyze(size_t childid /* this info can be used for printouts */){
 
 	std::cout << eventBreakdownS;
 
+	//histoNumEvents->Write();
 	//TNamed* eventBreakdown = new TNamed("Event Breakdown",eventBreakdownS);	
 	/*
 	 * Must be called in the end, takes care of thread-safe writeout and
@@ -384,6 +389,11 @@ void ttbarB::postProcess(){
 		 */
 		//const TH1* myplot=histos.getHisto("histoname1");
 
+		//const TH1* plotNumEvents = histos.getHisto("numEvents");
+
+		//TH1* myplot2 = histos.cloneHisto("NumEvents");
+		//myplot2->Scale(100000);
+		//delete myplot2;		
 		//std::cout << "(example output): the integral is " << myplot->Integral() <<std::endl;
 
 		/*

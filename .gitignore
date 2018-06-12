@@ -5,3 +5,4 @@ ttbarC
 *.swp
 ~*
 .*
+!.git*
