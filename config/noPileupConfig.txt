@@ -18,8 +18,9 @@ $
 [config-begin]
 
     Outputdir  = output
-    Outputfile = out_0PU_100kEventsNew3.root
-    
+$    Outputfile = out_0PU_100kEventsNew3.root
+    Outputfile = out_0PU_RealCuts2.root
+
 $ The luminosity is to be given to match the cross section values listed in the section "inputfiles"
 $ In this example, the cross sections are given in fb.
 $ In other cases that may be pb and the luminosity value here needs to be multplied by 1000.
