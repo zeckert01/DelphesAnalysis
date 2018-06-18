@@ -398,6 +398,8 @@ void ttbarC::analyze(size_t childid /* this info can be used for printouts */){
           }
         }
         invMass++;
+
+        //Jet PT and Eta Cut
         for(size_t i=0;i<jet.size();i++){
             if(jet.at(i)->PT > 30 && jet.at(i)->Eta > -2.4 && jet.at(i)->Eta < 2.4){
                 jetInd.push_back(i);
@@ -534,7 +536,7 @@ void ttbarC::analyze(size_t childid /* this info can be used for printouts */){
     eventBreakdownS += "Events Processed\t";
     eventBreakdownS += std::to_string(numEventsCount);
     eventBreakdownS += "\n";
-    eventBreakdownS += "Total Dilepton\t\t";
+    eventBreakdownS += "Lepton PT-Eta Cut\t\t";
     eventBreakdownS += std::to_string(totalDileptonEvents);
     eventBreakdownS += "\n";
     eventBreakdownS += "ee\t\t\t";
