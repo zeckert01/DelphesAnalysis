@@ -8,6 +8,7 @@
 #include "interface/ttbarC.h"
 #include <string>
 #include "TObjString.h"
+#include <cmath>
 
 void ttbarC::analyze(size_t childid /* this info can be used for printouts */){
 
@@ -81,19 +82,62 @@ void ttbarC::analyze(size_t childid /* this info can be used for printouts */){
     TH1* histoJetEta = addPlot(new TH1D("JetEta","Jet Eta",100,-3,3),"Eta", "N_{e}");
     TH1* histoJetPhi = addPlot(new TH1D("JetPhi","Jet Phi",100,-3,3),"Phi", "N_{e}");
 
+    TH1* histoJetPTee= addPlot(new TH1D("JetPTee","Jet PT Dielectron Channel",200,0,200),"p_{T} [GeV]","N_{e}");
+    TH1* histoJetEtaee = addPlot(new TH1D("JetEtaee","Jet Eta Dielectron Channel",100,-3,3),"Eta", "N_{e}");
+    TH1* histoJetPhiee = addPlot(new TH1D("JetPhiee","Jet Phi Dielectron Channel",100,-3,3),"Phi", "N_{e}");
+    
+    TH1* histoJetPTeu = addPlot(new TH1D("JetPTeu","Jet PT eu Channel",200,0,200),"p_{T} [GeV]","N_{e}");
+    TH1* histoJetEtaeu = addPlot(new TH1D("JetEtaeu","Jet Eta eu Channel",100,-3,3),"Eta", "N_{e}");
+    TH1* histoJetPhieu = addPlot(new TH1D("JetPhieu","Jet Phi eu Channel",100,-3,3),"Phi", "N_{e}");
+
+    TH1* histoJetPTuu = addPlot(new TH1D("JetPTuu","Jet PT Dimuon Channel",200,0,200),"p_{T} [GeV]","N_{e}");
+    TH1* histoJetEtauu = addPlot(new TH1D("JetEtauu","Jet Eta Dimuon Channel",100,-3,3),"Eta", "N_{e}");
+    TH1* histoJetPhiuu = addPlot(new TH1D("JetPhiuu","Jet Phi Dimuon Channel",100,-3,3),"Phi", "N_{e}");
+
     TH1* histoElecPT = addPlot(new TH1D("ElecPT","Electron PT",200,0,200),"p_{T} [GeV]","N_{e}");
     TH1* histoElecEta = addPlot(new TH1D("ElecEta","Electron Eta",100,-3,3),"Eta", "N_{e}");
     TH1* histoElecPhi = addPlot(new TH1D("ElecPhi","Electron Phi",100,-3,3),"Phi", "N_{e}");
 
+    TH1* histoElecPTee = addPlot(new TH1D("ElecPTee","Electron PT Dielectron Channel",200,0,200),"p_{T} [GeV]","N_{e}");
+    TH1* histoElecEtaee = addPlot(new TH1D("ElecEtaee","Electron Eta Dielectron Channel",100,-3,3),"Eta", "N_{e}");
+    TH1* histoElecPhiee = addPlot(new TH1D("ElecPhiee","Electron Phi Dielectron Channel",100,-3,3),"Phi", "N_{e}");
+
+    TH1* histoElecPTeu = addPlot(new TH1D("ElecPTeu","Electron PT eu Channel",200,0,200),"p_{T} [GeV]","N_{e}");
+    TH1* histoElecEtaeu = addPlot(new TH1D("ElecEtaeu","Electron Eta eu Channel",100,-3,3),"Eta", "N_{e}");
+    TH1* histoElecPhieu = addPlot(new TH1D("ElecPhieu","Electron Phi eu Channel",100,-3,3),"Phi", "N_{e}");
 
     TH1* histoMuonPT = addPlot(new TH1D("MuonPT","Muon PT",200,0,200),"p_{T} [GeV]","N_{e}");
     TH1* histoMuonEta = addPlot(new TH1D("MuonEta","Muon Eta",100,-3,3),"Eta", "N_{e}");
     TH1* histoMuonPhi = addPlot(new TH1D("MuonPhi","Muon Phi",100,-3,3),"Phi", "N_{e}");
+
     
-    TH1* histoMET = addPlot(new TH1D("METPT","MET PT",200,0,200),"p_{T} [GeV]","N_{e}");
+    TH1* histoMuonPTeu = addPlot(new TH1D("MuonPTeu","Muon PT eu Channel",200,0,200),"p_{T} [GeV]","N_{e}");
+    TH1* histoMuonEtaeu = addPlot(new TH1D("MuonEtaeu","Muon Eta eu Channel",100,-3,3),"Eta", "N_{e}");
+    TH1* histoMuonPhieu = addPlot(new TH1D("MuonPhieu","Muon Phi eu Channel",100,-3,3),"Phi", "N_{e}");
+
+    TH1* histoMuonPTuu = addPlot(new TH1D("MuonPTuu","Muon PT Dimuon Channel",200,0,200),"p_{T} [GeV]","N_{e}");
+    TH1* histoMuonEtauu = addPlot(new TH1D("MuonEtauu","Muon Eta Dimuon Channel",100,-3,3),"Eta", "N_{e}");
+    TH1* histoMuonPhiuu = addPlot(new TH1D("MuonPhiuu","Muon Phi Dimuon Channel",100,-3,3),"Phi", "N_{e}");
+
+    TH1* histoMET = addPlot(new TH1D("MET","MET",200,0,200),"p_{T} [GeV]","N_{e}");
     TH1* histoMETPhi = addPlot(new TH1D("METPhi","MET Phi",100,-3,3),"Phi", "N_{e}");
 
+    TH1* histoMETee = addPlot(new TH1D("METee","MET Dielectron Channel",200,0,200),"p_{T} [GeV]","N_{e}");
+    TH1* histoMETPhiee = addPlot(new TH1D("METPhiee","MET Phi Dielectron Channel",100,-3,3),"Phi", "N_{e}");
+
+    TH1* histoMETeu = addPlot(new TH1D("METeu","MET eu Channel",200,0,200),"p_{T} [GeV]","N_{e}");
+    TH1* histoMETPhieu = addPlot(new TH1D("METPhieu","MET Phi eu Channel",100,-3,3),"Phi", "N_{e}");
+
+    TH1* histoMETuu = addPlot(new TH1D("METuu","MET Dimuon Channel",200,0,200),"p_{T} [GeV]","N_{e}");
+    TH1* histoMETPhiuu = addPlot(new TH1D("METPhiuu","MET Phi Dimuon Channel",100,-3,3),"Phi", "N_{e}");
+
     TH1* histoNumJet = addPlot(new TH1D("NumJet","Number of Jets",30,0,30),"Jets","N_{e}");
+
+    TH1* histoNumJetee = addPlot(new TH1D("NumJetee","Number of Jets Dielectron Channel",30,0,30),"Jets","N_{e}");
+
+    TH1* histoNumJeteu = addPlot(new TH1D("NumJeteu","Number of Jets eu Channel",30,0,30),"Jets","N_{e}");
+
+    TH1* histoNumJetuu = addPlot(new TH1D("NumJetuu","Number of Jets Dimuon Channel",30,0,30),"Jets","N_{e}");
 
     TH1* histoNumEvents = addPlot(new TH1D("NumEvents","Number of Events by Type",4,0,4),"Type of Events","N_{e}");
 
@@ -129,8 +173,10 @@ void ttbarC::analyze(size_t childid /* this info can be used for printouts */){
     int invMass = 0;
     int metCut = 0;
     
+    int numEventsCount = 0;
+
     //size_t nevents=tree()->entries();
-    size_t nevents = 100000;
+    size_t nevents = 500000;
     //size_t nevents = 1000;
     
     if(isTestMode())
@@ -150,11 +196,17 @@ void ttbarC::analyze(size_t childid /* this info can be used for printouts */){
 
         // Count total number of events processed
 
+
+        numEventsCount++;
         histoNumEvents->Fill(0);
         
         
         int numJets = 0;
-        
+        int numJetsee = 0;
+        int numJetseu = 0;
+        int numJetsuu = 0;
+
+
         bool isDimuon = false;
         bool isDielec = false;
         bool isEMuon = false;
@@ -165,7 +217,7 @@ void ttbarC::analyze(size_t childid /* this info can be used for printouts */){
         std::vector<size_t> jetInd;
         if(elecs.size()>0){
             for(size_t i=0;i<elecs.size();i++){
-                if(elecs.at(i)->PT > 20 && elecs.at(i)->Eta > -2.4 && elecs.at(i)->Eta < 2.4){
+                if(elecs.at(i)->PT > 20 && elecs.at(i)->Eta < 2.4 && elecs.at(i)->Eta > -2.4 && !(((elecs.at(i)->Eta > 1.4442) && (elecs.at(i)->Eta < 1.5660)) || ((elecs.at(i)->Eta < -1.4441) && (elecs.at(i)->Eta > -1.5660)))){
                     eleInd.push_back(i);
                 }
             }
@@ -384,32 +436,63 @@ void ttbarC::analyze(size_t childid /* this info can be used for printouts */){
                 
         // Fill Muon Histograms
         if(isDimuon || isEMuon){
-            for(size_t i=0;i<muonInd.size();i++){
-    
-                histoMuonPT->Fill(muonloose.at(muonInd.at(i))->PT);
-                histoMuonEta->Fill(muonloose.at(muonInd.at(i))->Eta);
-                histoMuonPhi->Fill(muonloose.at(muonInd.at(i))->Phi);
-                }
-        }
+           histoMuonPT->Fill(muonloose.at(leadMuon)->PT);
+           histoMuonEta->Fill(muonloose.at(leadMuon)->Eta);
+           histoMuonPhi->Fill(muonloose.at(leadMuon)->Phi);
 
-        // Fill Electron Histograms
-        if(isDielec || isEMuon){
-            for(size_t i=0;i<eleInd.size();i++){
-                histoElecPT->Fill(elecs.at(eleInd.at(i))->PT);
-                histoElecEta->Fill(elecs.at(eleInd.at(i))->Eta);
-                histoElecPhi->Fill(elecs.at(eleInd.at(i))->Phi);
-                
+            if(isDimuon){
+                histoMuonPTuu->Fill(muonloose.at(leadMuon)->PT);     
+                histoMuonEtauu->Fill(muonloose.at(leadMuon)->Eta);
+                histoMuonPhiuu->Fill(muonloose.at(leadMuon)->Phi);
+            }
+            else{
+                histoMuonPTeu->Fill(muonloose.at(leadMuon)->PT);     
+                histoMuonEtaeu->Fill(muonloose.at(leadMuon)->Eta);
+                histoMuonPhieu->Fill(muonloose.at(leadMuon)->Phi);
             }
         }
+        // Fill Electron Histograms
+        if(isDielec || isEMuon){
+            histoElecPT->Fill(elecs.at(leadElec)->PT);
+            histoElecEta->Fill(elecs.at(leadElec)->Eta);
+            histoElecPhi->Fill(elecs.at(leadElec)->Phi);
 
-        
-        
+            if(isDielec){
+                histoElecPTee->Fill(elecs.at(leadElec)->PT);
+                histoElecEtaee->Fill(elecs.at(leadElec)->Eta);
+                histoElecPhiee->Fill(elecs.at(leadElec)->Phi);
+            }
+            else{
+                histoElecPTeu->Fill(elecs.at(leadElec)->PT);
+                histoElecEtaeu->Fill(elecs.at(leadElec)->Eta);        
+                histoElecPhieu->Fill(elecs.at(leadElec)->Phi);       
+            }
+        } 
         // Fill Jet Histograms
         for(size_t i=0;i<jetInd.size();i++){
             histoJetPT->Fill(jet.at(jetInd.at(i))->PT);
             histoJetEta->Fill(jet.at(jetInd.at(i))->Eta);
             histoJetPhi->Fill(jet.at(jetInd.at(i))->Phi);
             numJets++;
+
+            if(isDielec){
+                histoJetPTee->Fill(jet.at(jetInd.at(i))->PT);
+                histoJetEtaee->Fill(jet.at(jetInd.at(i))->Eta);
+                histoJetPhiee->Fill(jet.at(jetInd.at(i))->Phi);
+                numJetsee++;
+            }
+            else if(isEMuon){
+                histoJetPTeu->Fill(jet.at(jetInd.at(i))->PT);
+                histoJetEtaeu->Fill(jet.at(jetInd.at(i))->Eta);
+                histoJetPhieu->Fill(jet.at(jetInd.at(i))->Phi);
+                numJetseu++;
+            }
+            else{
+                histoJetPTuu->Fill(jet.at(jetInd.at(i))->PT);
+                histoJetEtauu->Fill(jet.at(jetInd.at(i))->Eta);
+                histoJetPhiuu->Fill(jet.at(jetInd.at(i))->Phi);
+                numJetsuu++;
+            }
         
         }
 
@@ -417,13 +500,40 @@ void ttbarC::analyze(size_t childid /* this info can be used for printouts */){
         for(size_t i=0;i<met.size();i++){
             histoMET->Fill(met.at(i)->MET);
             histoMETPhi->Fill(met.at(i)->Phi);
+
+            if(isDielec){
+                histoMETee->Fill(met.at(i)->MET);
+                histoMETPhiee->Fill(met.at(i)->Phi);
+
+            }
+            else if(isEMuon){
+                histoMETeu->Fill(met.at(i)->MET);
+                histoMETPhieu->Fill(met.at(i)->Phi);
+
+            }
+            else{
+                histoMETuu->Fill(met.at(i)->MET);
+                histoMETPhiuu->Fill(met.at(i)->Phi);
+
+            }
         }
         
         histoNumJet->Fill(numJets);
+
+        if(isDimuon)
+            histoNumJetuu->Fill(numJetsuu);
+        else if(isDielec)
+            histoNumJetee->Fill(numJetsee);
+        else
+            histoNumJeteu->Fill(numJetseu);
+
     }
 
     //Print number of events of each type
     std::string eventBreakdownS = "Type of Event\tNumber of Events\n";
+    eventBreakdownS += "Events Processed\t";
+    eventBreakdownS += std::to_string(numEventsCount);
+    eventBreakdownS += "\n";
     eventBreakdownS += "Total Dilepton\t\t";
     eventBreakdownS += std::to_string(totalDileptonEvents);
     eventBreakdownS += "\n";

@@ -19,7 +19,7 @@ $
 
     Outputdir  = output
 $    Outputfile = out_0PU_100kEventsNew3.root
-    Outputfile = out_0PU_RealCuts2.root
+    Outputfile = out_0PU_RealCutsMoreHistos500kEvents.root
 
 $ The luminosity is to be given to match the cross section values listed in the section "inputfiles"
 $ In this example, the cross sections are given in fb.
